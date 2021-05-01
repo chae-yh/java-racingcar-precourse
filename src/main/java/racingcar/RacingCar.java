@@ -10,21 +10,21 @@ public class RacingCar {
 
 	public RacingCar(String name) {
 		this.name = name;
-		isNameLengthInAllowedRange();
-		isNameConsistOfAllowedInput();
+		nameLengthRangeValidation();
+		nameCharacterValidation();
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	private void isNameLengthInAllowedRange() {
+	private void nameLengthRangeValidation() {
 		if (this.name.length() <= MIN_NAME_LENGTH || this.name.length() > MAX_NAME_LENGTH) {
 			throw new IllegalArgumentException();
 		}
 	}
 
-	private void isNameConsistOfAllowedInput() {
+	private void nameCharacterValidation() {
 		Pattern pattern = Pattern.compile(REGEX_TARGET);
 
 		if (!pattern.matcher(this.name).find()) {
