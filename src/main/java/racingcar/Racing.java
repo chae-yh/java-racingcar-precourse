@@ -41,6 +41,10 @@ public class Racing {
 		}
 	}
 
+	public RacingCars getRacingcarsOnRace() {
+		return this.racingCars;
+	}
+
 	public RacingCars getWinners() {
 		if (!isFinished()) {
 			throw new IllegalArgumentException();
