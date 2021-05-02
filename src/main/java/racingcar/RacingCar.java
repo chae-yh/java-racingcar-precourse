@@ -9,19 +9,24 @@ public class RacingCar {
 	public static final String REGEX_TARGET = "^[0-9a-zA-Z]*$";
 
 	private String name;
-	private int movedDisdantce;
+	private int movedDistance;
 
 	public RacingCar(String name) {
 		this.name = name;
 		nameLengthRangeValidation();
 		nameCharacterValidation();
+		init();
+	}
+
+	private void init() {
+		this.movedDistance = 0;
 	}
 
 	public void move() {
 		RandomNo randomNo = new RandomNo();
 
 		if (randomNo.getNo() >= 4) {
-			this.movedDisdantce++;
+			this.movedDistance++;
 		}
 	}
 
@@ -29,12 +34,12 @@ public class RacingCar {
 		RandomNo randomNo = new RandomNo(number);
 
 		if (randomNo.getNo() >= 4) {
-			this.movedDisdantce++;
+			this.movedDistance++;
 		}
 	}
 
-	public int getMovedDisdantce() {
-		return this.movedDisdantce;
+	public int getMovedDistance() {
+		return this.movedDistance;
 	}
 
 	public String getName() {

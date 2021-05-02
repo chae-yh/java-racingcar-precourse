@@ -42,17 +42,17 @@ public class RacingCarTest {
 		RacingCar racingCar = new RacingCar("abcde");
 
 		racingCar.move(4);
-		assertThat(racingCar.getMovedDisdantce() == 1).isTrue();
+		assertThat(racingCar.getMovedDistance() == 1).isTrue();
 
 		assertThatThrownBy(() -> {
 			racingCar.move(10);
 		}).isInstanceOf(IllegalArgumentException.class);
 
 		racingCar.move(3);
-		assertThat(racingCar.getMovedDisdantce() == 1).isTrue();
+		assertThat(racingCar.getMovedDistance() == 1).isTrue();
 
 		racingCar.move(5);
-		assertThat(racingCar.getMovedDisdantce() == 2).isTrue();
+		assertThat(racingCar.getMovedDistance() == 2).isTrue();
 
 		assertThatThrownBy(() -> {
 			racingCar.move(-5);
