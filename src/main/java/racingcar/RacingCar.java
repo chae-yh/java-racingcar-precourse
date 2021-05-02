@@ -7,7 +7,9 @@ public class RacingCar {
 	private static final int MIN_NAME_LENGTH = 0;
 	private static final int MAX_NAME_LENGTH = 5;
 	public static final String REGEX_TARGET = "^[0-9a-zA-Z]*$";
-	String name;
+
+	private String name;
+	private int movedDisdantce;
 
 	public RacingCar(String name) {
 		this.name = name;
@@ -15,8 +17,28 @@ public class RacingCar {
 		nameCharacterValidation();
 	}
 
+	public void move() {
+		RandomNo randomNo = new RandomNo();
+
+		if (randomNo.getNo() >= 4) {
+			this.movedDisdantce++;
+		}
+	}
+
+	public void move(int number) {
+		RandomNo randomNo = new RandomNo(number);
+
+		if (randomNo.getNo() >= 4) {
+			this.movedDisdantce++;
+		}
+	}
+
+	public int getMovedDisdantce() {
+		return this.movedDisdantce;
+	}
+
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	private void nameLengthRangeValidation() {

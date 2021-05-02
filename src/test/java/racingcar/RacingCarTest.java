@@ -35,4 +35,27 @@ public class RacingCarTest {
 			new RacingCar("1b cd");
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
+
+	@Test
+	@DisplayName("자동차는 값이 4이상일 경우 전진하고 3이하 이면 멈추는지 검증")
+	void is_car_rightly_operated() {
+		RacingCar racingCar = new RacingCar("abcde");
+
+		racingCar.move(4);
+		assertThat(racingCar.getMovedDisdantce() == 1).isTrue();
+
+		assertThatThrownBy(() -> {
+			racingCar.move(10);
+		}).isInstanceOf(IllegalArgumentException.class);
+
+		racingCar.move(3);
+		assertThat(racingCar.getMovedDisdantce() == 1).isTrue();
+
+		racingCar.move(5);
+		assertThat(racingCar.getMovedDisdantce() == 2).isTrue();
+
+		assertThatThrownBy(() -> {
+			racingCar.move(-5);
+		}).isInstanceOf(IllegalArgumentException.class);
+	}
 }
