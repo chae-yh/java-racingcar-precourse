@@ -19,44 +19,63 @@ public class Racing {
 		status = RacingStatus.READY;
 	}
 
-	public Winners start() {
-		Set<RacingCar> winnersSet = new HashSet<>();
-
-		while (!status.equals(RacingStatus.FINISH)) {
-			racingCarsMove(winnersSet);
+	public void race() {
+		if (isFinished()) {
+			return;
 		}
 
-		return new Winners(winnersSet);
-	}
-
-	private void racingCarsMove(Set<RacingCar> winnersSet) {
 		for (RacingCar racingCar : racingCars.getRacingCars()) {
 			racingCar.move();
-			checkWinners(winnersSet, racingCar);
+			setFinishFlag(racingCar);
 		}
 	}
 
-	public Winners start(int number) {
-		Set<RacingCar> winnersSet = new HashSet<>();
-
-		while (!status.equals(RacingStatus.FINISH)) {
-			racingCarsMove(number, winnersSet);
+	public void race(int number) {
+		if (isFinished()) {
+			return;
 		}
 
-		return new Winners(winnersSet);
-	}
-
-	private void racingCarsMove(int number, Set<RacingCar> winnersSet) {
 		for (RacingCar racingCar : racingCars.getRacingCars()) {
 			racingCar.move(number);
-			checkWinners(winnersSet, racingCar);
+			setFinishFlag(racingCar);
 		}
 	}
 
-	private void checkWinners(Set<RacingCar> winnersSet, RacingCar racingCar) {
-		if (racingCar.getMovedDisdantce() >= movementDistanceInput.getInput()) {
+	public RacingCars getWinners() {
+		if (!isFinished()) {
+			throw new IllegalArgumentException();
+		}
+
+		return new RacingCars(getWinnersSet());
+	}
+
+	private Set<RacingCar> getWinnersSet() {
+		Set<RacingCar> winnersSet = new HashSet<>();
+
+		for (RacingCar racingCar : racingCars.getRacingCars()) {
+			setWinners(winnersSet, racingCar);
+		}
+
+		return winnersSet;
+	}
+
+	private void setWinners(Set<RacingCar> winnersSet, RacingCar racingCar) {
+		if (isReachedAtGoal(racingCar)) {
 			winnersSet.add(racingCar);
+		}
+	}
+
+	private void setFinishFlag(RacingCar racingCar) {
+		if (!isFinished() && isReachedAtGoal(racingCar)) {
 			status = RacingStatus.FINISH;
 		}
+	}
+
+	public boolean isFinished() {
+		return RacingStatus.FINISH.equals(status);
+	}
+
+	private boolean isReachedAtGoal(RacingCar racingCar) {
+		return racingCar.getMovedDistance() >= movementDistanceInput.getInput();
 	}
 }
