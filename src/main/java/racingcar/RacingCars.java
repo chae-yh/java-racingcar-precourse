@@ -21,4 +21,8 @@ public class RacingCars {
 			throw new IllegalArgumentException();
 		}
 	}
+
+	public Set<RacingCar> getRacingCars() {
+		return this.racingCars;
+	}
 }
