@@ -1,13 +1,13 @@
 package racingcar;
 
-import java.util.List;
+import java.util.Set;
 
 public class RacingCars {
 	public static final int RACING_CARS_MIN_COUNT = 2;
 	public static final int RACING_CARS_MAX_COUNT = 10;
-	private List<RacingCar> racingCars;
+	private Set<RacingCar> racingCars;
 
-	public RacingCars(List<RacingCar> candidates) {
+	public RacingCars(Set<RacingCar> candidates) {
 		this.racingCars = candidates;
 		countValidation();
 	}

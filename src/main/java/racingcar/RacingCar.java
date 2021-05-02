@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class RacingCar {
@@ -30,5 +31,19 @@ public class RacingCar {
 		if (!pattern.matcher(this.name).find()) {
 			throw new IllegalArgumentException();
 		}
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(this.getName());
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof RacingCar)) {
+			return false;
+		}
+
+		return this.getName().equals(((RacingCar)obj).getName());
 	}
 }
