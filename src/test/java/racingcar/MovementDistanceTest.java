@@ -5,36 +5,36 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class MovementDistanceInputTest {
+public class MovementDistanceTest {
 	@Test
 	@DisplayName("입력 값이 숫자인지 체크함")
 	void is_number() {
-		assertThat(new MovementDistanceInput("11").getInput() == 11).isTrue();
+		assertThat(new MovementDistance("11").getDistance() == 11).isTrue();
 
 		assertThatThrownBy(() -> {
-			new MovementDistanceInput("abc");
-		}).isInstanceOf(NumberFormatException.class);
+			new MovementDistance("abc");
+		}).isInstanceOf(IllegalArgumentException.class);
 	}
 
 	@Test
 	@DisplayName("입력 값이 0보다 크고 100보다 작은지 검증")
 	void is_inputvaluse_greater_than_0_and_lower_than_100() {
-		assertThat(new MovementDistanceInput("10").getInput() == 10).isTrue();
+		assertThat(new MovementDistance("10").getDistance() == 10).isTrue();
 
 		assertThatThrownBy(() -> {
-			new MovementDistanceInput("0");
+			new MovementDistance("0");
 		}).isInstanceOf(IllegalArgumentException.class);
 
 		assertThatThrownBy(() -> {
-			new MovementDistanceInput("-1");
+			new MovementDistance("-1");
 		}).isInstanceOf(IllegalArgumentException.class);
 
 		assertThatThrownBy(() -> {
-			new MovementDistanceInput("100");
+			new MovementDistance("100");
 		}).isInstanceOf(IllegalArgumentException.class);
 
 		assertThatThrownBy(() -> {
-			new MovementDistanceInput("123");
+			new MovementDistance("123");
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
 }
