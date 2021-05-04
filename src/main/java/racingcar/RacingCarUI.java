@@ -26,9 +26,9 @@ public class RacingCarUI {
 		return new RacingCars(candidates);
 	}
 
-	private MovementDistanceInput askMovementDistance(Scanner scanner) {
+	private MovementDistance askMovementDistance(Scanner scanner) {
 		System.out.println("시도할 회수는 몇회인가요?");
-		return new MovementDistanceInput(scanner.nextLine());
+		return new MovementDistance(scanner.nextLine());
 	}
 
 	private void printRacing(Racing racing) {

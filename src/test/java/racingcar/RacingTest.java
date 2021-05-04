@@ -25,8 +25,8 @@ public class RacingTest {
 	@Test
 	@DisplayName("한 번의 레이스 후 최대 1만큼 움직임")
 	void move_at_most_1_distance_after_one_race() {
-		MovementDistanceInput movementDistanceInput = new MovementDistanceInput("10");
-		Racing racing = new Racing(racingCars, movementDistanceInput);
+		MovementDistance movementDistance = new MovementDistance("10");
+		Racing racing = new Racing(racingCars, movementDistance);
 
 		racing.race(5);
 
@@ -38,8 +38,8 @@ public class RacingTest {
 	@Test
 	@DisplayName("경기가 끝나면 차는 움직이지 않음")
 	void when_a_race_is_finished_cars_dont_move() {
-		MovementDistanceInput movementDistanceInput = new MovementDistanceInput("1");
-		Racing racing = new Racing(racingCars, movementDistanceInput);
+		MovementDistance movementDistance = new MovementDistance("1");
+		Racing racing = new Racing(racingCars, movementDistance);
 
 		racing.race(5);
 		racing.race(5);
@@ -55,8 +55,8 @@ public class RacingTest {
 	void inform_who_is_the_winner_when_the_racing_is_finished() {
 		String winnerName = "";
 
-		MovementDistanceInput movementDistanceInput = new MovementDistanceInput("2");
-		Racing racing = new Racing(racingCars, movementDistanceInput);
+		MovementDistance movementDistance = new MovementDistance("2");
+		Racing racing = new Racing(racingCars, movementDistance);
 
 		racing.race(5);
 

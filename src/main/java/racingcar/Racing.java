@@ -5,12 +5,12 @@ import java.util.Set;
 
 public class Racing {
 	private RacingCars racingCars;
-	private MovementDistanceInput movementDistanceInput;
+	private MovementDistance movementDistance;
 	private RacingStatus status;
 
-	public Racing(RacingCars racingCars, MovementDistanceInput movementDistanceInput) {
+	public Racing(RacingCars racingCars, MovementDistance movementDistance) {
 		this.racingCars = racingCars;
-		this.movementDistanceInput = movementDistanceInput;
+		this.movementDistance = movementDistance;
 
 		init();
 	}
@@ -80,6 +80,6 @@ public class Racing {
 	}
 
 	private boolean isReachedAtGoal(RacingCar racingCar) {
-		return racingCar.getMovedDistance() >= movementDistanceInput.getInput();
+		return racingCar.getMovedDistance() >= movementDistance.getDistance();
 	}
 }

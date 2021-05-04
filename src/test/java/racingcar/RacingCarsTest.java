@@ -12,22 +12,14 @@ public class RacingCarsTest {
 	Set<RacingCar> candidates;
 
 	@Test
-	@DisplayName("가능한 자동차 최소 개수가 2대 이상 10대 미만 인지 검증")
-	void is_cars_count_bigger_than_2_and_lower_than_10() {
+	@DisplayName("가능한 자동차 최소 개수가 1대 이상 10대 미만 인지 검증")
+	void is_cars_count_bigger_than_1_and_lower_than_10() {
 		candidates = new HashSet<>();
 		candidates.add(new RacingCar("1"));
-		candidates.add(new RacingCar("2"));
 
-		assertThat(new RacingCars(candidates).getCount() == 2).isTrue();
-
-		candidates = new HashSet<>();
-
-		assertThatThrownBy(() -> {
-			new RacingCars(candidates);
-		}).isInstanceOf(IllegalArgumentException.class);
+		assertThat(new RacingCars(candidates).getCount() == 1).isTrue();
 
 		candidates = new HashSet<>();
-		candidates.add(new RacingCar("1"));
 
 		assertThatThrownBy(() -> {
 			new RacingCars(candidates);
