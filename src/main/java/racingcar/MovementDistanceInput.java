@@ -16,7 +16,7 @@ public class MovementDistanceInput {
 
 	private void isInAllowedRange() {
 		if (this.input <= MIN_VALUE || this.input >= MAX_VALUE) {
-			throw new IllegalArgument();
+			throw new IllegalArgumentException("movement distance is over allowed range(min : 1 / max : 99)");
 		}
 	}
 
