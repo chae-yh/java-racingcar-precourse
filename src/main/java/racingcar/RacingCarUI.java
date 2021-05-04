@@ -57,7 +57,7 @@ public class RacingCarUI {
 	}
 
 	private void printRacingSituation(Racing racing) {
-		for (RacingCar racingCar : racing.getRacingcarsOnRace().getRacingCars()) {
+		for (RacingCar racingCar : racing.getRacingCarsOnRace().getRacingCars()) {
 			System.out.println(racingCar.getName() + ":" + getMovementDistanceInLine(racingCar));
 		}
 

@@ -48,7 +48,7 @@ public class RacingCar {
 
 	private void nameLengthRangeValidation() {
 		if (this.name.length() <= MIN_NAME_LENGTH || this.name.length() > MAX_NAME_LENGTH) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("name's length is over allowed range(min : 1 / max : 5)");
 		}
 	}
 
@@ -56,7 +56,7 @@ public class RacingCar {
 		Pattern pattern = Pattern.compile(REGEX_TARGET);
 
 		if (!pattern.matcher(this.name).find()) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("only number and alphabet are allowed");
 		}
 	}
 

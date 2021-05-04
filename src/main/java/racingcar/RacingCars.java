@@ -18,7 +18,7 @@ public class RacingCars {
 
 	private void countValidation() {
 		if (this.getCount() < RACING_CARS_MIN_COUNT || this.getCount() >= RACING_CARS_MAX_COUNT) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("the number of cars is over allowed range(min : 1 / max : 9)");
 		}
 	}
 

@@ -19,7 +19,7 @@ public class RandomNo {
 
 	private void numberRangeValidation() {
 		if (this.number < 0 || this.number >= 10) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("random number is over allowed range(min : 1 / max : 9)");
 		}
 	}
 

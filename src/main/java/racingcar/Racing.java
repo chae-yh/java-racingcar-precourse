@@ -41,13 +41,13 @@ public class Racing {
 		}
 	}
 
-	public RacingCars getRacingcarsOnRace() {
+	public RacingCars getRacingCarsOnRace() {
 		return this.racingCars;
 	}
 
 	public RacingCars getWinners() {
 		if (!isFinished()) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("race is not yet finished");
 		}
 
 		return new RacingCars(getWinnersSet());
