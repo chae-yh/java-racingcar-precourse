@@ -1,32 +1,25 @@
 package racingcar;
 
 import java.util.Objects;
-import java.util.regex.Pattern;
 
 public class RacingCar {
-	private static final int MIN_NAME_LENGTH = 0;
-	private static final int MAX_NAME_LENGTH = 5;
-	public static final String REGEX_TARGET = "^[0-9a-zA-Z]*$";
-
-	private String name;
-	private int movedDistance;
+	private MovementDistance movedDistance;
+	private RacingCarName name;
 
 	public RacingCar(String name) {
-		this.name = name;
-		nameLengthRangeValidation();
-		nameCharacterValidation();
+		this.name = new RacingCarName(name);
 		init();
 	}
 
 	private void init() {
-		this.movedDistance = 0;
+		movedDistance = new MovementDistance();
 	}
 
 	public void move() {
 		RandomNo randomNo = new RandomNo();
 
 		if (randomNo.getNo() >= 4) {
-			this.movedDistance++;
+			movedDistance.addOneDistance();
 		}
 	}
 
@@ -34,30 +27,16 @@ public class RacingCar {
 		RandomNo randomNo = new RandomNo(number);
 
 		if (randomNo.getNo() >= 4) {
-			this.movedDistance++;
+			movedDistance.addOneDistance();
 		}
 	}
 
 	public int getMovedDistance() {
-		return this.movedDistance;
+		return movedDistance.getDistance();
 	}
 
 	public String getName() {
-		return this.name;
-	}
-
-	private void nameLengthRangeValidation() {
-		if (this.name.length() <= MIN_NAME_LENGTH || this.name.length() > MAX_NAME_LENGTH) {
-			throw new IllegalArgumentException("name's length is over allowed range(min : 1 / max : 5)");
-		}
-	}
-
-	private void nameCharacterValidation() {
-		Pattern pattern = Pattern.compile(REGEX_TARGET);
-
-		if (!pattern.matcher(this.name).find()) {
-			throw new IllegalArgumentException("only number and alphabet are allowed");
-		}
+		return name.getName();
 	}
 
 	@Override
